@@ -20,10 +20,7 @@ hook global BufCreate .+\.(vs|fs|gs|vsh|fsh|gsh|vshader|fshader|gshader|vert|fra
 hook global WinSetOption filetype=glsl %{
     require-module glsl
     add-highlighter window/glsl ref glsl
-}
-
-hook global WinSetOption filetype=(?!glsl).* %{
-    remove-highlighter window/glsl
+    hook -once -always window WinSetOption filetype=.* %{ remove-highlighter window/glsl }
 }
 
 provide-module glsl %{
