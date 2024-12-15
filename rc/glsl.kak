@@ -21,6 +21,7 @@ hook global WinSetOption filetype=glsl %{
     require-module glsl
     add-highlighter window/glsl ref glsl
     hook -once -always window WinSetOption filetype=.* %{ remove-highlighter window/glsl }
+    set-option buffer comment_line //
 }
 
 provide-module glsl %{
